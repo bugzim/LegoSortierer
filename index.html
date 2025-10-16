@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	
+	<meta charset="UTF-8"><title>Farben</title>
+	<meta http-equiv="refresh" content="5" >
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+  <h1>Legostein Datenbank</h1>
+
+      <!-- Container für Balken über den Tabellen -->
+  <div id="container1" class="balken-container"></div>
+  <div id="container2" class="balken-container"></div>
+  <div id="container3" class="balken-container"></div>
+  <div id="container4" class="balken-container"></div>
+  <div id="container5" class="balken-container"></div>
+  <div id="container6" class="balken-container"></div>
+  <div id="container7" class="balken-container"></div>
+
+
+  <table id="table1"> <th style="background-color:red">R</th> </table>
+  <table id="table2"> <th style="background-color:green">G</th> </table>
+  <table id="table3"> <th style="background-color:blue">B</th> </table>
+  <table id="table4"> <th style="background-color:cyan">C</th> </table>
+  <table id="table5"> <th style="background-color:gold">Y</th> </table>
+  <table id="table6"> <th style="background-color:magenta">M</th> </table>
+  <table id="table7"> <th style="background-color:white">W</th> </table>
+    
+
+<script>
+
+fetch('/api/farben')
+  .then(response => response.json())
+  .then(data => {
+    const keys = ['r','g','b','c','y','m','w'];
+    const colors = ['red','green','blue','cyan','gold','magenta','white'];
+
+    data.forEach(farbe => {
+      keys.forEach((key,index) => {
+        // Zahlen in Tabelle
+        const table = document.getElementById('table'+(index+1));
+        const zeile = document.createElement('tr');
+        const zelle = document.createElement('td');
+        zelle.textContent = farbe[key];
+        zeile.appendChild(zelle);
+        table.appendChild(zeile);
+
+        // Balken über Tabelle
+        const container = document.getElementById('container'+(index+1));
+        const balken = document.createElement('div');
+        balken.style.height = (20 * farbe[key] + 20) + 'px';
+        balken.style.width = '100%'; // passt zur Breite des Containers/Tabelle
+        balken.style.backgroundColor = colors[index];
+	balken.style.position = 'relative'; // für Stopsel
+        balken.style.margin = '2px 0';
+        balken.style.borderRadius = '4px 4px 0 0';
+
+	for (let i = 0; i < 2; i++) {
+          const stopsel = document.createElement('div');
+          stopsel.style.width = '16px';
+          stopsel.style.height = '16px';
+          stopsel.style.backgroundColor = colors[index];
+          stopsel.style.borderRadius = '50%'; // rund
+          stopsel.style.position = 'absolute';
+          stopsel.style.top = '-8px';          // leicht über Balken
+          stopsel.style.left = `${i * 27 + 8}px`; // nebeneinander, kleine Lücke
+          balken.appendChild(stopsel);
+        }
+        
+	container.appendChild(balken);
+
+      });
+    });
+  })
+  .catch(error => console.error('Fehler beim Laden der Daten:', error));
+
+
+</script>
+
+</body>
+
+</html>
