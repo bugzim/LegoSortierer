@@ -1,0 +1,89 @@
+body {
+    background-color: gray;
+}
+
+h1 {
+    color: black;
+    font-size: 40px;
+}
+
+#table1 { border: 2px solid red; }
+#table2 { border: 2px solid green; }
+#table3 { border: 2px solid blue; }
+#table4 { border: 2px solid cyan; }
+#table5 { border: 2px solid gold; }
+#table6 { border: 2px solid magenta; }
+#table7 { border: 2px solid white; }
+
+
+#table1 {
+    position: absolute;
+    bottom: 25%; 
+    left: 36%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+#table2 {
+    position: absolute;
+    bottom: 25%; 
+    left: 40%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+#table3 {
+    position: absolute;
+    bottom: 25%; 
+    left: 44%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+#table4 {
+    position: absolute;
+    bottom: 25%; 
+    left: 48%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+#table5 {
+    position: absolute;
+    bottom: 25%; 
+    left: 52%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+#table6 {
+    position: absolute;
+    bottom: 25%; 
+    left: 56%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+#table7 {
+    position: absolute;
+    bottom: 25%; 
+    left: 60%;
+    transform: translateX(-50%);
+    width: 3%;
+}
+
+.balken-container {
+    position: absolute;
+    bottom: calc(25% + 57px); /* etwas über der Tabelle */
+    width: 3%; /* gleiche Breite wie die Tabelle */
+    transform: translateX(-50%);
+}
+
+/* Positionen passend zu deinen Tabellen */
+#container1 { left: 36%; }
+#container2 { left: 40%; }
+#container3 { left: 44%; }
+#container4 { left: 48%; }
+#container5 { left: 52%; }
+#container6 { left: 56%; }
+#container7 { left: 60%; }
